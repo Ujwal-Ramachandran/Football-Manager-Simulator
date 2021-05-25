@@ -1,0 +1,72 @@
+/* Ball */
+.box{
+    margin: 0 auto;
+    margin-top: 15%;
+    width: 40px;
+    height: 140px;
+    position: relative;
+}
+    
+.box.shadow{
+    position: absolute;
+    width: 100%;
+    height: 10px;
+    background-color: grey;
+    bottom: 0;
+    border-radius: 100%;
+    transform: scaleX(.8);
+    opacity: .6;
+    animation: shadowScale 1s linear infinite;
+}
+
+.gravity{
+    width: 40px;
+    height: 40px;
+    animation: bounce 1s cubic-bezier(0.68, 0.35, 0.29, 0.54) infinite;
+}
+
+.ball{
+    width: 40px;
+    height: 40px;
+    background-image: url('https://image.flaticon.com/icons/svg/33/33736.svg');
+    background-size: cover;
+    animation: roll .6s linear infinite;
+}
+  
+@keyframes roll {
+    0% {}
+    100% { transform: rotate(360deg) }
+}
+@keyframes bounce {
+    0% {}
+    50% { transform: translateY(100px) }
+    100% {}
+}
+@keyframes shadowScale {
+    0% {}
+    50% { transform: scaleX(1); opacity: .8;}
+    100% {}
+}
+
+/* Text */
+
+[class*=classic]:before {
+    content:"Loading...";
+  }
+.classic-4 {
+    font-weight: bold;
+    font-family: monospace;
+    font-size: 30px;
+    clip-path: inset(0 3ch 0 0);
+    animation:c4 1s steps(4) infinite;
+  }
+  
+  @keyframes c4 {to{clip-path: inset(0 -1ch 0 0)}}
+
+  body {
+    display: grid;
+    grid-template-columns: repeat(auto-fit,minmax(250px,1fr));
+    grid-auto-rows: 130px;
+    place-items:center;
+  }
+  

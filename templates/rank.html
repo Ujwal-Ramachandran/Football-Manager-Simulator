@@ -1,0 +1,50 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" type="image/png" href="favicon.png">
+    <title>FMS | Ranking Mode</title>
+</head>
+<style type="text/css">
+      
+    th{
+        text-align: center;
+        color: crimson;  
+    }
+
+    tr{
+        border: 1px solid black;  
+    }
+  
+    td{
+        padding: 8px 8px;
+        border: 1px solid black;
+    }
+</style>
+<body>
+    <h1>Rank Mode</h1>
+    <table style="margin-left: 20px;">
+        <th>
+            <tr>    
+                <td>Rank</td>
+                <td>Name</td>
+                <td>Position</td>
+                <td>Age</td>
+                <td>Nationality</td>
+                <td>{{rank_data[6]}}</td>
+            </tr>
+        </th>  
+        {% for i in range(rank_data[5]) %}
+        <tr>
+            <td>{{i+1}}</td>
+            <td>{{rank_data[0][i]}}</td>
+            <td>{{rank_data[1][i]}}</td>
+            <td>{{rank_data[2][i]}}</td>
+            <td>{{rank_data[3][i]}}</td>
+            <td>{{rank_data[4][i]}}</td>
+            {% endfor %}
+        </tr>
+    </table>
+</body>
+</html>
