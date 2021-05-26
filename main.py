@@ -6,6 +6,7 @@ app = Flask(__name__)
 
 df = pd.read_csv("fifa_processed.csv")
 
+# Rank the players
 def rank_players(pos, country, age, sortby, nop):
     df_smaller = df    
     if pos != "Any":
@@ -29,6 +30,7 @@ def rank_players(pos, country, age, sortby, nop):
     return df_smaller
 
 
+# Find the best team
 def man_mode(formation, age, country):
     df_smaller = df    
     if country != "Any":
@@ -61,26 +63,43 @@ def man_mode(formation, age, country):
     n_st = int(formation.split("-")[2])
     st_list = df_st.head(n_st)["Name"].tolist()
     
-    team_list = gk_list + def_list + mid_list + st_list
+    team_list = [st_list] + [mid_list] + [def_list]  + [gk_list] 
     return team_list
 
+
+# Home
 @app.route("/")
 def index():
-    return render_template('index.html')
+    return render_template("index.html")
 
+
+# Manager Mode
 @app.route("/manager")
-def man():
-    return render_template('manMode.html')
+def manager():
+    return render_template("manMode.html")
 
+@app.route("/mop", methods = ["POST","GET"]) 
+def disp_team():
+    if request.method == "GET" :
+        return render_template("manMode.html")
+    if request.method == "POST" :
+        team_f = request.form.get("formation")
+        team_a = request.form.get("age")
+        team_n = request.form.get("country")
+        team = man_mode(team_f,team_a,team_n)
+        return render_template("manager.html", team = team)
+
+
+# Ranking Mode
 @app.route("/rank")
 def rank():
-    return render_template('rankMode.html')
+    return render_template("rankMode.html")
 
-@app.route("/rop", methods = ['POST','GET'])
+@app.route("/rop", methods = ["POST","GET"])
 def disp_rank():
-    if request.method == 'GET' :
-        return render_template('rankMode.html')
-    if request.method == 'POST':
+    if request.method == "GET" :
+        return render_template("rankMode.html")
+    if request.method == "POST":
         rd_p = request.form.get("pos")
         rd_a = request.form.get("age")
         rd_c = request.form.get("country")
@@ -91,16 +110,33 @@ def disp_rank():
         rd_pf = rd["Pos_simp"].astype(str).values.tolist()
         rd_cf = rd["Nationality"].astype(str).values.tolist()
         rd_af = rd["Age"].astype(str).values.tolist()
-        if rd_s == "Height in cm" :
-            rd_sf = rd["Height_cm"].astype(str).values.tolist()
+        if rd_s == "Stamina" :
+            rd_sf = rd["Stamina"].astype(str).values.tolist()
         elif rd_s == "Acceleration" :
             rd_sf = rd["Acceleration"].astype(str).values.tolist()
+        elif rd_s == "Finishing" :
+            rd_sf = rd["Finishing"].astype(str).values.tolist()
+        elif rd_s == "Strength" :
+            rd_sf = rd["Strength"].astype(str).values.tolist()
+        elif rd_s == "Vision" :
+            rd_sf = rd["Vision"].astype(str).values.tolist()
+        elif rd_s == "Positioning" :
+            rd_sf = rd["Positioning"].astype(str).values.tolist()
+        elif rd_s == "GKReflexes" :
+            rd_sf = rd["GKReflexes"].astype(str).values.tolist()
+        elif rd_s == "Dribbling" :
+            rd_sf = rd["Dribbling"].astype(str).values.tolist()
+        elif rd_s == "Height_cm" :
+            rd_sf = rd["Height_cm"].astype(str).values.tolist()
+        elif rd_s == "Weight" :
+            rd_sf = rd["Weight"].astype(str).values.tolist()
         else :
             rd_sf = rd["Overall"].astype(str).values.tolist()
-        rank_data = [rd_name, rd_pf, rd_af, rd_cf, rd_sf, len(rd_name),rd_s]
-        return render_template('rank.html', rank_data = rank_data)
 
-#ImmutableMultiDict([('pos', 'GK'), ('age', '18-22'), ('country', 'India'), ('sortby', 'Overall')])    
+        rank_data = [rd_name, rd_pf, rd_af, rd_cf, rd_sf, len(rd_name),rd_s]
+        return render_template("rank.html", rank_data = rank_data)
+
+
 
 if __name__ == "__main__" :
     app.run()
