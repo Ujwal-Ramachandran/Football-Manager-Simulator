@@ -1,0 +1,46 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" type="image/png" href="{{ url_for('static', filename= 'favicon.png')}}">
+    <link rel="stylesheet" href="static/css/main.css">
+    <title>Football Manager Simulator</title>
+</head>
+<body>
+    <!--Nav bar -->
+    
+    <!-- Rest -->
+    <h1>Welcome to Football Simulator</h1>
+
+    <div class="manager">
+        <a href="manager"><img src={{ url_for("static", filename='manmode2.png')}}></a>
+            <div class="manager-info"> 
+                <p>
+                    <h3>Manager Mode</h3>
+                    On selecting the formation of user’s choice, with added constraints, the website displays the best possible team that fits the selected criteria. 
+                </p>
+            </div>
+    </div>
+
+    <div class="rank">
+        <a href="rank"><img src={{ url_for("static", filename='rank.png')}}></a>
+        <div class="rank-info"> 
+            <p>
+                <h3>Rank Mode</h3>
+                Using our detailed database, it is possible to achieve separate rankings for all players in the Premier League, based on the player's position. These players are ranked on relevant statistics such as Goals Scored, Assists etc.
+            </p>
+        </div>
+    </div>
+
+    <!-- Footer -->
+</body>
+<style>
+    body{
+        cursor: url(img/spo406.cur),auto !important;
+        }
+    a:hover{
+        cursor: url(img/spo378.cur),auto !important;
+    }
+</style>
+</html>

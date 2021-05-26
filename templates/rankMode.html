@@ -1,0 +1,52 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" type="image/png" href="{{ url_for('static', filename= 'favicon.png')}}">
+    <title>FMS | Ranking Mode</title>
+</head>
+<body>
+    <h1>Rank Mode</h1>
+    <form action="/rop" method = "POST">
+        <p>
+            Position : 
+            <select name="pos" id="pos">
+                <option value="Any">Overall</option>
+                <option value="ATT">Striker</option>
+                <option value="MID">Mid-Fielder</option>
+                <option value="DEF">Defender</option>
+                <option value="GK">GoalKeeper</option>
+            </select>
+        </p>
+        <p>Age : <input type="text" name="age"/></p>
+        <p>Nationality : <input type="text" name="country"/></p>
+        <p>
+            SortBy : 
+            <select name="sortby" id="sortby">
+                <option value="Overall">Overall</option>
+                <option value="Finishing">Finishing</option>
+                <option value="Dribbling">Dribbling</option>
+                <option value="Stamina">Stamina</option>
+                <option value="Acceleration">Acceleration</option>
+                <option value="Strength">Strength</option>
+                <option value="Vision">Vision</option>
+                <option value="Positioning">Positioning</option>                
+                <option value="GKReflexes">GKReflexes</option>
+                <option value="Height_cm">Height_cm</option>
+                <option value="Weight">Weight</option>
+            </select>
+        </p>
+        <p>Number of Players  <input type="text" name="nop"/></p>
+        <p><input type="submit" value="Submit"/></p>
+    </form>    
+</body>
+</html>
+
+<!-- 
+Rank
+ -> Position - Dropdown
+ -> Age - Dropdown
+ -> Nationality - Text 
+ -> SortBy 
+-->

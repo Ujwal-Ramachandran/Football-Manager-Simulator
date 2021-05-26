@@ -1,0 +1,42 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" type="image/png" href="{{ url_for('static', filename= 'favicon.png')}}">
+    <title>FMS | Manager Mode</title>
+</head>
+<body>
+    <h1>Manager Mode</h1>
+    <form action="/mop" method = "POST">
+        <p>
+            Formation : 
+            <select name="formation" id="formation">
+                <option value="4-4-2">4-4-2</option>
+                <option value="4-3-3">4-3-3</option>
+                <option value="5-3-2">5-3-2</option>
+            </select>
+        </p>
+        <p>
+            Age : 
+            <select name="age" id="age">
+                <option value="Any">All Stars</option>
+                <option value="Below 18">Below 18</option>
+                <option value="18-21">18-21</option>
+                <option value="22-26">22-26</option>
+                <option value="27-31">27-31</option>
+                <option value="Above 31">Above 31</option>
+            </select>
+        </p>
+        <p>Nationality : <input type="text" name="country"/></p>
+        <p><input type="submit" value="Submit"/></p>
+    </form>    
+</body>
+</html>
+
+
+
+<!-- Manager
+-> Formation
+-> Age
+-> Nationality -->
