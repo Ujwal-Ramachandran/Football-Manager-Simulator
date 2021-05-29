@@ -1,0 +1,105 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" type="image/png" href="{{ url_for('static', filename= 'favicon.png')}}"> 
+    <title>FMS | Ranking Mode</title>
+</head>
+<style type="text/css">
+    body{
+        background-image: url("static/bg-rm.jpg");
+        color: white;
+        background-color: black;
+    }
+    
+    h1{
+        text-align: center;
+        padding: 20px;
+        margin-top: 10px;
+    }      
+    th{
+        text-align: center;
+        color: crimson;  
+    }
+
+    tr{
+        border: 1px solid black;  
+    }
+  
+    td{
+        padding: 8px 8px;
+        border: 1px solid black;
+    }
+
+    button {
+        display: inline-block;
+        background-color: black;
+        border: none;
+        color: #FFFFFF;
+        text-align: center;
+        padding: 20px;
+        width: 200px;
+        transition: all 0.5s;
+        cursor: pointer;
+        margin: 5px;
+    }
+
+    button span {
+        cursor: pointer;
+        display: inline-block;
+        position: relative;
+        transition: 0.5s;
+    }
+
+    button span:after {
+        content: "\00bb";
+        position: absolute;
+        opacity: 0;
+        top: 0;
+        right: -20px;
+        transition: 0.5s;
+    }
+
+    button:hover span {
+        padding-right: 25px;
+    }
+
+    button:hover span:after {
+        opacity: 1;
+        right: 0;
+    }
+</style>
+<body>
+    <h1>Rank Mode</h1>
+    <center>
+    <table style="margin-left: 20px;">
+        <th>
+            <tr>    
+                <td>Rank</td>
+                <td>Name</td>
+                <td>Position</td>
+                <td>Age</td>
+                <td>Nationality</td>
+                <td>{{rank_data[6]}}</td>
+            </tr>
+        </th>  
+        {% for i in range(rank_data[5]) %}
+        <tr>
+            <td>{{i+1}}</td>
+            <td>{{rank_data[0][i]}}</td>
+            <td>{{rank_data[1][i]}}</td>
+            <td>{{rank_data[2][i]}}</td>
+            <td>{{rank_data[3][i]}}</td>
+            <td>{{rank_data[4][i]}}</td>
+            {% endfor %}
+        </tr>
+    </table>
+    </center>
+    <a href="rank">
+        <button>
+            <span>Back</span>
+        </button>
+    </a>
+</body>
+</html>
