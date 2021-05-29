@@ -72,6 +72,10 @@ def man_mode(formation, age, country):
 def index():
     return render_template("index.html")
 
+@app.route("/home")
+def home():
+    return render_template("index.html")
+
 
 # Manager Mode
 @app.route("/manager")
@@ -86,6 +90,8 @@ def disp_team():
         team_f = request.form.get("formation")
         team_a = request.form.get("age")
         team_n = request.form.get("country")
+        if team_n == "" :
+            team_n = "Any"
         team = man_mode(team_f,team_a,team_n)
         return render_template("manager.html", team = team)
 
@@ -103,8 +109,14 @@ def disp_rank():
         rd_p = request.form.get("pos")
         rd_a = request.form.get("age")
         rd_c = request.form.get("country")
+        if rd_c == "" :
+            rd_c = "Any"
         rd_s = request.form.get("sortby")
-        nop = int(request.form.get("nop"))
+        nop = request.form.get("nop")
+        if nop == "" :
+            nop = 10
+        else : 
+            nop = int(nop)
         rd = rank_players(rd_p, rd_c, rd_a, rd_s, nop)
         rd_name = rd["Name"].astype(str).values.tolist()
         rd_pf = rd["Pos_simp"].astype(str).values.tolist()
@@ -132,7 +144,7 @@ def disp_rank():
             rd_sf = rd["Weight"].astype(str).values.tolist()
         else :
             rd_sf = rd["Overall"].astype(str).values.tolist()
-
+        
         rank_data = [rd_name, rd_pf, rd_af, rd_cf, rd_sf, len(rd_name),rd_s]
         return render_template("rank.html", rank_data = rank_data)
 
