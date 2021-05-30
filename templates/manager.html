@@ -16,29 +16,18 @@
     }
 
     h1{
-        padding: 20px;
+        padding: 50px;
         margin-top: 10px;
     }
+
     div {
-        padding: 10px;
+        padding: 30px;
     }
 
-    .STR {
-        margin: 75px, auto;
-    }
-
-    .MID {
-        margin: 105px, auto;
-    }
-
-    .DEF {
-        margin: 145px, auto;
-    }
 
     .GK {
         position: relative;
         text-align: center;
-        align-items: center;
     }
 
     button {
@@ -83,28 +72,27 @@
 <body>
     <center>
     <h1>Manager Mode</h1>
-    <div class="STR">
-        {% for i in team[0] %}
-        {{i}}
-        {% endfor %}
-    </div><br>
-    <div class="MID">
-        {% for i in team[1] %}
-        {{i}}
-        {% endfor %}
-    </div><br>
-    <div class="DEF">
-        {% for i in team[2] %}
-        {{i}}
-        {% endfor %}
-    </div><br>
-    <div class="GK">
-        {% for i in team[3] %}
-        {{i}}
-        {% endfor %}
-    </div>
+        <div class="STR">
+            {% for i in team[0] %}
+            {{"----[" + i + "]----"}}
+            {% endfor %}
+        </div><br>
+        <div class="MID">
+            {% for i in team[1] %}
+            {{"----[" + i + "]----"}}
+            {% endfor %}
+        </div><br>
+        <div class="DEF">
+            {% for i in team[2] %}
+            {{"----[" + i + "]----"}}
+            {% endfor %}
+        </div><br>
+        <div class="GK">
+            {% for i in team[3] %}
+            {{"----[" + i + "]----"}}
+            {% endfor %}
+        </div>
     </center>
-    <!-- <img src={{ url_for("static", filename='HC.jpg')}}> -->
     <a href="manager">
         <button>
             <span>Back</span>
