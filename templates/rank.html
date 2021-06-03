@@ -4,13 +4,14 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="shortcut icon" type="image/png" href="{{ url_for('static', filename= 'favicon.png')}}"> 
-    <title>FMS | Ranking Mode</title>
+    <title>FMS | Player Rank</title>
 </head>
 <style type="text/css">
     body{
         background-image: url("static/bg-rm.jpg");
         color: white;
         background-color: black;
+        font-size: 18px;
     }
     
     h1{
@@ -53,12 +54,16 @@
     }
 
     button span:after {
-        content: "\00bb";
+        content: "\00ab";
         position: absolute;
         opacity: 0;
         top: 0;
         right: -20px;
         transition: 0.5s;
+    }
+
+    .h span:after{
+        content: "\039e";
     }
 
     button:hover span {
@@ -71,6 +76,11 @@
     }
 </style>
 <body>
+    <a href="home">
+        <button class="h">
+            <span>Home</span>
+        </button>
+    </a>
     <h1>Rank Mode</h1>
     <center>
     <table style="margin-left: 20px;">
