@@ -6,16 +6,17 @@
     <link rel="shortcut icon" type="image/png" href="{{ url_for('static', filename= 'favicon.png')}}">
     <link rel="stylesheet" href="static/css/main.css">
     <title>Football Manager Simulator</title>
+    <link rel ="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 </head>
 <body>    
     <h1>Welcome to Football Simulator</h1>
-
+    <div class="about"><a href="about"><i class="fa fa-info" aria-hidden="true"></i></a></div>
     <div class="manager">
-        <a href="manager"><img src={{ url_for("static", filename='manmode2.png')}}></a>
+        <a href="manager"><img src={{ url_for("static", filename='manager.png')}}></a>
             <div class="manager-info"> 
                 <p>
                     <h3>Manager Mode</h3>
-                    On selecting the formation of user’s choice, with added constraints, the website displays the best possible team that fits the selected criteria. 
+                    On selecting the formation of your choice, with added constraints, the website displays the best possible team that fits the selected criteria. 
                 </p>
             </div>
     </div>
@@ -32,12 +33,4 @@
 
     <!-- Footer -->
 </body>
-<style>
-    body{
-        cursor: url(img/spo406.cur),auto !important;
-        }
-    a:hover{
-        cursor: url(img/spo378.cur),auto !important;
-    }
-</style>
 </html>
