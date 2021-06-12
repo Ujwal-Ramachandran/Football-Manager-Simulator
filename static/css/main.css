@@ -1,0 +1,94 @@
+/* Body */
+body{
+    color: white;
+    background-image: url("bg.jpg");
+    background-size: cover;
+    font-family: Arial, Helvetica, sans-serif;
+    text-align: center;
+    align-items: center;
+    position: relative;
+}
+
+h1{
+    margin-top: 10px;
+    padding: 10px;
+}
+
+a:visited{
+    color: white;
+    text-decoration-line: none;
+}
+.about{
+    margin-right: 5px;
+    margin-top: 10px;
+}
+/* Manager */
+.manager {    
+    position: fixed;
+    left: 0px;
+    bottom: 0px;
+    transition: 1s;
+} 
+
+.manager img{
+    transition: 1s;
+}
+
+.manager img:hover{
+    transform: scale(1.29);
+}
+
+.manager .manager-info{
+    position: absolute;
+    left: 300px;
+    top: 100px;
+    bottom: 200px;
+    background: rgba(0, 0, 0, 0.5); 
+    width: 100%;
+    transition: 1s ease;
+    opacity:0;
+    font-size: 20px;
+    padding: 20px;
+    text-align: center;
+}
+
+.manager:hover .manager-info {
+    opacity: 1;
+}
+
+
+/* Rank */
+.rank {
+    position: fixed;
+    right: 50px;
+    bottom: 5px;    
+    transition: 1s;
+} 
+  
+.rank img{
+    height: 400px;
+    width: 250px;
+    transition: 1s;
+}
+
+.rank img:hover{
+    transform: scale(1.29);
+}
+
+.rank .rank-info{
+    position: absolute;
+    right: 300px;
+    top: 50px;
+    bottom: 50px;
+    background: rgba(0, 0, 0, 0.5); 
+    width: 100%;
+    transition: 1s ease;
+    opacity:0;
+    font-size: 20px;
+    padding: 20px;
+    text-align: center;
+}
+
+.rank:hover .rank-info {
+    opacity: 1;
+}
