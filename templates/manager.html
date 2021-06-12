@@ -17,7 +17,7 @@
     }
 
     h1{
-        padding: 50px;
+        padding: 30px;
         margin-top: 10px;
     }
 
@@ -82,26 +82,32 @@
     </a>
     <center>
     <h1>Manager Mode</h1>
-        <div class="STR">
+    {% if team[4] < 11 %}
+    <h2>404 Error : </h2><br>
+    Sorry.<br>Number of players available from this country is {{team[4]}} (less than 11).<br>So a team cannot be made for this country.<br>Try again.
+
+    {% else %}
+        <div class="STR" title="Striker">
             {% for i in team[0] %}
             {{"----[" + i + "]----"}}
             {% endfor %}
         </div><br>
-        <div class="MID">
+        <div class="MID" title="Midfielder">
             {% for i in team[1] %}
             {{"----[" + i + "]----"}}
             {% endfor %}
         </div><br>
-        <div class="DEF">
+        <div class="DEF" title="Defender">
             {% for i in team[2] %}
             {{"----[" + i + "]----"}}
             {% endfor %}
         </div><br>
-        <div class="GK">
+        <div class="GK" title="Goalkeeper">
             {% for i in team[3] %}
             {{"----[" + i + "]----"}}
             {% endfor %}
         </div>
+        {% endif %}
     </center>
     <a href="manager">
         <button>
