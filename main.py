@@ -47,23 +47,28 @@ def man_mode(formation, age, country):
             df_smaller = df_smaller.loc[(df["Age"] >= 27) & (df["Age"] < 32)]
         if age == "Above 31":
             df_smaller = df_smaller.loc[(df["Age"] > 31)]
-            
+    l = 0   
     df_gk = df_smaller.loc[df_smaller["Pos_simp"] == "GK"]
     gk_list = df_gk.head(1)["Name"].tolist()
-    
+    l += len(gk_list)
+
     df_def = df_smaller.loc[df_smaller["Pos_simp"] == "DEF"]
     n_def = int(formation.split("-")[0])
     def_list = df_def.head(n_def)["Name"].tolist()
+    l += len(def_list)
     
     df_mid = df_smaller.loc[df_smaller["Pos_simp"] == "MID"]
     n_mid = int(formation.split("-")[1])
     mid_list = df_mid.head(n_mid)["Name"].tolist()
+    l += len(mid_list)
     
     df_st = df_smaller.loc[df_smaller["Pos_simp"] == "ATT"]
     n_st = int(formation.split("-")[2])
     st_list = df_st.head(n_st)["Name"].tolist()
+    l += len(st_list)
     
-    team_list = [st_list] + [mid_list] + [def_list]  + [gk_list] 
+    team_list = [st_list] + [mid_list] + [def_list]  + [gk_list]
+    team_list.append(l)
     return team_list
 
 
@@ -75,6 +80,10 @@ def index():
 @app.route("/home")
 def home():
     return render_template("index.html")
+
+@app.route("/about")
+def about():
+    return render_template("aboutUs.html")
 
 
 # Manager Mode
@@ -89,7 +98,7 @@ def disp_team():
     if request.method == "POST" :
         team_f = request.form.get("formation")
         team_a = request.form.get("age")
-        team_n = request.form.get("country")
+        team_n = request.form.get("country").title()
         if team_n == "" :
             team_n = "Any"
         team = man_mode(team_f,team_a,team_n)
@@ -108,7 +117,7 @@ def disp_rank():
     if request.method == "POST":
         rd_p = request.form.get("pos")
         rd_a = request.form.get("age")
-        rd_c = request.form.get("country")
+        rd_c = request.form.get("country").title()
         if rd_c == "" :
             rd_c = "Any"
         rd_s = request.form.get("sortby")
@@ -144,7 +153,7 @@ def disp_rank():
             rd_sf = rd["Weight"].astype(str).values.tolist()
         else :
             rd_sf = rd["Overall"].astype(str).values.tolist()
-        
+    
         rank_data = [rd_name, rd_pf, rd_af, rd_cf, rd_sf, len(rd_name),rd_s]
         return render_template("rank.html", rank_data = rank_data)
 
